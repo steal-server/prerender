@@ -1,6 +1,6 @@
 {
   "name": "dssrv-prerender",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "pre-processor engine that powers the harp web server",
   "repository": {
     "type": "git",
