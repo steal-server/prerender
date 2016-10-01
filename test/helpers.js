@@ -9,8 +9,8 @@ describe("helpers", function(){
     it('should return all possible file names for html ordered by priority.', function(done){
       var list = polymer.helpers.buildPriorityList('index.html')
       list.should.be.an.instanceOf(Array)
-      list.should.have.lengthOf(6)
-      var plist = "index.jade, index.ejs, index.md, index.html.jade, index.html.ejs, index.html.md".split(', ')
+      list.should.have.lengthOf(8)
+      var plist = "index.pug, index.jade, index.ejs, index.md, index.html.pug, index.html.jade, index.html.ejs, index.html.md".split(', ')
       list.should.eql(plist)
       done()
     })
@@ -35,27 +35,27 @@ describe("helpers", function(){
     it('should build priority list assuming template file when unknown.', function(done){
       var list = polymer.helpers.buildPriorityList('feed.xml')
       list.should.be.an.instanceOf(Array)
-      list.should.have.lengthOf(3)
-      list.should.eql('feed.xml.jade, feed.xml.ejs, feed.xml.md'. split(', '))
+      list.should.have.lengthOf(4)
+      list.should.eql('feed.xml.pug, feed.xml.jade, feed.xml.ejs, feed.xml.md'. split(', '))
       done()
     })
 
     it('should look for templates on json files.', function(done){
       var list = polymer.helpers.buildPriorityList('profile.json')
       list.should.be.an.instanceOf(Array)
-      list.should.have.lengthOf(3)
+      list.should.have.lengthOf(4)
       list.should.include('profile.json.jade')
       list.should.include('profile.json.ejs')
       list.should.include('profile.json.md')
-      list.should.eql('profile.json.jade, profile.json.ejs, profile.json.md'. split(', '))
+      list.should.eql('profile.json.pug, profile.json.jade, profile.json.ejs, profile.json.md'. split(', '))
       done()
     })
 
     it('should look for templates when no ext present.', function(done){
       var list = polymer.helpers.buildPriorityList('appcache')
       list.should.be.an.instanceOf(Array)
-      list.should.have.lengthOf(3)
-      list.should.eql('appcache.jade, appcache.ejs, appcache.md'.split(', '))
+      list.should.have.lengthOf(4)
+      list.should.eql('appcache.pug, appcache.jade, appcache.ejs, appcache.md'.split(', '))
       done()
     })
 
@@ -85,6 +85,13 @@ describe("helpers", function(){
   })
 
   describe('.outputPath(filename)', function(){
+    it('should convert pug to html.', function(done){
+      polymer.helpers.outputPath('foobar.html').should.eql('foobar.html')
+      polymer.helpers.outputPath('foobar.pug').should.eql('foobar.html')
+      polymer.helpers.outputPath('foobar.html.pug').should.eql('foobar.html')
+      done()
+    })
+
     it('should convert jade to html.', function(done){
       polymer.helpers.outputPath('foobar.html').should.eql('foobar.html')
       polymer.helpers.outputPath('foobar.jade').should.eql('foobar.html')
@@ -140,6 +147,7 @@ describe("helpers", function(){
 
   describe('.outputType(filename)', function(){
     it('should know source type.', function(done){
+       polymer.helpers.outputType("foo.pug").should.eql("html")
       polymer.helpers.outputType("foo.html").should.eql("html")
       polymer.helpers.outputType("foo.jade").should.eql("html")
       polymer.helpers.outputType("foo.ejs").should.eql("html")

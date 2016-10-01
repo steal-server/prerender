@@ -1,5 +1,5 @@
 var should    = require('should')
-var polymer   = require('../')
+var prerender   = require('../')
 
 describe("render(path, callback)", function(){
 
@@ -7,7 +7,7 @@ describe("render(path, callback)", function(){
     var root = __dirname + "/fixtures/render/underscores"
 
     it("should ignore file beginning with underscore", function(done){
-      polymer.root(root).render("_beep.jade", function(error, body){
+      prerender.root(root).render("_beep.jade", function(error, body){
         should.not.exist(error)
         should.not.exist(body)
         done()
@@ -16,7 +16,7 @@ describe("render(path, callback)", function(){
 
 
     it("should ignore file if in dir beginning with underscore", function(done){
-      polymer.root(root).render("_foo/bar.jade", function(error, body){
+      prerender.root(root).render("_foo/bar.jade", function(error, body){
         should.not.exist(error)
         should.not.exist(body)
         done()
@@ -26,7 +26,7 @@ describe("render(path, callback)", function(){
 
   describe('invalid paths', function(){
     it("should return (null, null) if file not present.", function(done){
-      polymer.root(__dirname + "/fixtures/data/valid").render("missing.jade", function(error, body){
+      prerender.root(__dirname + "/fixtures/data/valid").render("missing.jade", function(error, body){
         should.not.exist(error)
         should.not.exist(body)
         done()
@@ -34,7 +34,7 @@ describe("render(path, callback)", function(){
     })
 
     it("should handle missing stylesheet file.", function(done){
-      polymer.root(__dirname + "/fixtures/data/valid").render("missing.less", function(error, body){
+      prerender.root(__dirname + "/fixtures/data/valid").render("missing.less", function(error, body){
         should.not.exist(error)
         should.not.exist(body)
         done()
@@ -46,7 +46,7 @@ describe("render(path, callback)", function(){
 
     it("should use implicit layout if it exists", function(done){
       var root = __dirname + "/fixtures/render/layouts/implicit"
-      polymer.root(root).render("index.jade", function(errors, body){
+      prerender.root(root).render("index.jade", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
         body.should.include("<h1>Implicit Layout</h1>")
@@ -57,7 +57,7 @@ describe("render(path, callback)", function(){
 
     it("should not need to use any layout", function(done){
       var root = __dirname + "/fixtures/render/layouts/absent"
-      polymer.root(root).render("index.jade", function(errors, body){
+      prerender.root(root).render("index.jade", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
         body.should.not.include("Layout")
@@ -68,7 +68,7 @@ describe("render(path, callback)", function(){
 
     it("should use explicit layout if passed in", function(done){
       var root = __dirname + "/fixtures/render/layouts/explicit"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("index.jade", { layout: "custom_layout.jade" }, function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -81,7 +81,7 @@ describe("render(path, callback)", function(){
 
     it("should use explicit layout if present in data.json file", function(done){
       var root = __dirname + "/fixtures/render/layouts/explicit"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("about.jade", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -96,7 +96,7 @@ describe("render(path, callback)", function(){
 
   describe("partials", function(){
     var root = __dirname + "/fixtures/render/partials"
-    var poly = polymer.root(root)
+    var poly = prerender.root(root)
 
     it("should have mixes partials with locals", function(done){
       poly.render("index.jade", function(error, body){
@@ -122,7 +122,7 @@ describe("render(path, callback)", function(){
 
   describe("plain", function(){
     var root = __dirname + "/fixtures/render/plain"
-    var poly = polymer.root(root)
+    var poly = prerender.root(root)
 
     it("should fire callback when", function(done){
       poly.render("index.html", function(error, body){
@@ -137,7 +137,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in jade", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("jade.jade", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -149,7 +149,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in ejs", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("ejs.ejs", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -161,7 +161,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in markdown", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("markdown.md", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -173,7 +173,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in less", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("less.less", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -184,7 +184,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in scss", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("scss.scss", function(errors, body){
         should.not.exist(errors)
         should.exist(body)
@@ -195,7 +195,7 @@ describe("render(path, callback)", function(){
 
     it("should render special characters in stylus", function(done){
       var root = __dirname + "/fixtures/render/internationalization"
-      var poly = polymer.root(root)
+      var poly = prerender.root(root)
       poly.render("styl.styl", function(errors, body){
         should.not.exist(errors)
         should.exist(body)

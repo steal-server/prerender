@@ -1,14 +1,14 @@
 var should  = require('should')
-var polymer = require('../')
+var preRenderer = require('../')
 
 describe("templates", function(){
 
   var root = __dirname + "/fixtures/templates"
-  var poly = polymer.root(root)
+  var prerender = preRenderer.root(root)
 
   describe(".ejs", function(){
     it("should render ejs file", function(done){
-      poly.render("bio.ejs", function(error, body){
+      prerender.render("bio.ejs", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>Hello EJS</h1>")
@@ -17,7 +17,7 @@ describe("templates", function(){
     })
 
     it("should minify beyond preprocessor", function(done){
-      poly.render("bio.ejs", function(error, body){
+      prerender.render("bio.ejs", function(error, body){
         should.not.exist(error)
         body.should.not.include("\n\n")
         done()
@@ -27,7 +27,7 @@ describe("templates", function(){
 
   describe(".md", function(){
     it("should render markdown file", function(done){
-      poly.render("stuff.md", function(error, body){
+      prerender.render("stuff.md", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>hello markdown</h1>")
@@ -39,7 +39,7 @@ describe("templates", function(){
     })
 
     it("should minify beyond preprocessor", function(done){
-      poly.render("stuff.md", function(error, body){
+      prerender.render("stuff.md", function(error, body){
         should.not.exist(error)
         body.should.not.include("\n\n")
         done()
@@ -47,7 +47,7 @@ describe("templates", function(){
     })
 
     it("should render markdown file encoded in UTF-8 with BOM", function(done){
-      poly.render("bom.md", function(error, body){
+      prerender.render("bom.md", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>file with bom marker</h1>")
@@ -59,7 +59,7 @@ describe("templates", function(){
   describe(".jade", function(){
 
     it("should not give deprecated !!! warning", function(done){
-      poly.render("deprecated/jade/index.jade", function(error, body){
+      prerender.render("deprecated/jade/index.jade", function(error, body){
         should.exist(error)
         should.not.exist(body)
         done()
@@ -67,7 +67,7 @@ describe("templates", function(){
     })
 
     it("should have jade partial layout and include working", function(done){
-      poly.render("index.jade", function(error, body){
+      prerender.render("index.jade", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>Sintaxi</h1>")
@@ -79,7 +79,7 @@ describe("templates", function(){
     })
 
     it("should minify beyond preprocessor", function(done){
-      poly.render("index.jade", function(error, body){
+      prerender.render("index.jade", function(error, body){
         should.not.exist(error)
         body.should.not.include("\n\n")
         done()
@@ -87,7 +87,7 @@ describe("templates", function(){
     })
 
     it("should pass in partials from the global object", function(done){
-      poly.render("index.jade", function(error, body){
+      prerender.render("index.jade", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>Sintaxi</h1>")
@@ -99,7 +99,7 @@ describe("templates", function(){
     })
 
     it("should return errors if error found", function(done){
-      poly.render("invalid.jade", function(error, body){
+      prerender.render("invalid.jade", function(error, body){
         should.not.exist(body)
         should.exist(error)
         error.should.have.property("name")
@@ -110,7 +110,7 @@ describe("templates", function(){
     })
 
     it("should extend from a file with absolute path", function(done){
-      poly.render("extend.jade", function(error, body){
+      prerender.render("extend.jade", function(error, body){
         should.not.exist(error)
         should.exist(body)
         body.should.include("<h1>Sintaxi</h1>")

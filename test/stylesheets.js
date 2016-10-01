@@ -57,6 +57,7 @@ describe("stylesheets", function(){
 
     it("should have basic css file", function(done){
       poly.render("main.styl", function(error, body){
+        console.log(error)
         should.not.exist(error)
         should.exist(body)
         body.should.include("background:#ffc0cb")
@@ -92,6 +93,7 @@ describe("stylesheets", function(){
     })
     it("should not include the source map in the css body", function(done){
       poly.render("main.styl", function(error, body, sourcemap){
+        console.log(error)
         should.not.exist(error)
         body.should.not.include("/*#")
         done()
