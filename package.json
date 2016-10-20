@@ -8,7 +8,11 @@
   },
   "main": "./lib/dssrv-prerender",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "testee src/test.html --browsers firefox --reporter Spec",
+    "start": "done-serve --port 8080",
+    "develop": "done-serve --develop --port 8080",
+    "document": "documentjs",
+    "build": "node build"
   },
   "author": "Frank Lemanschik <frank@dspeed.eu>",
   "contributors": [
