@@ -1,6 +1,6 @@
 {
   "name": "dssrv-prerender",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "pre-processor engine that powers the DIREKTSPEED Server - Prerender Module (srv-prerender) or harp web server",
   "repository": {
     "type": "git",
