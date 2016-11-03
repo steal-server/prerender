@@ -27,7 +27,7 @@
     "Frank Lemanschik <frank@dspeed.eu>"
   ],
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "autoprefixer": ">=6.5.0",
     "coffee-script": ">=1.11.0",
     "ejs": ">=2.3.4",
