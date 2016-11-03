@@ -1,6 +1,6 @@
 {
   "name": "dssrv-prerender",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "pre-processor engine that powers the DIREKTSPEED Server - Prerender Module (srv-prerender) or harp web server",
   "repository": {
     "type": "git",
@@ -28,22 +28,22 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": ">=6.5.0",
-    "coffee-script": ">=1.11.0",
-    "ejs": ">=2.3.4",
-    "harp-minify": ">=0.4.0",
-    "less": ">=2.5.3",
-    "lodash": ">=3.10.1",
-    "lru-cache": ">=4.0.0",
-    "marked": ">=0.3.5",
-    "node-sass": ">=3.7.0",
-    "postcss": ">=5.0.14",
-    "stylus": ">=0.54.5",
-    "pug": ">=2.0.0-alpha6",
+    "autoprefixer": "^6.5.0",
+    "coffee-script": "^1.11.0",
+    "ejs": "^2.3.4",
+    "harp-minify": "^0.4.0",
+    "less": "^2.5.3",
+    "lodash": "^3.10.1",
+    "lru-cache": "^4.0.0",
+    "marked": "^0.3.5",
+    "node-sass": "^3.7.0",
+    "postcss": "^5.0.14",
+    "stylus": "^0.54.5",
+    "pug": "^2.0.0-alpha6",
     "through": "2.3.8"
   },
   "devDependencies": {
-    "mocha": ">=3.1.0",
-    "should": ">=1.2.2"
+    "mocha": "^3.1.0",
+    "should": "^1.2.2"
   }
 }
