@@ -43,7 +43,7 @@
     "through": "2.3.8"
   },
   "devDependencies": {
-    "mocha": "^3.1.0",
+    "mocha": "^3.2.0",
     "should": "^11.1.1"
   }
 }
