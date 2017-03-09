@@ -1,18 +1,18 @@
-var should    = require('should')
-var polymer   = require('../')
+var should    = require('should');
+var polymer   = require('../');
+/* global describe, it */
+describe('contents', function(){
 
-describe("contents", function(){
+  describe('public', function(){
+    it('should return public object', function(done){
+      var root = __dirname + '/fixtures/data/valid';
+      var poly = polymer.root(root);
+      poly.render('pub.json.jade', { 'layout': false }, function(err, result){
+        var pub = JSON.parse(result);
+        should.exist(pub['_contents']);
+        done();
+      });
+    });
+  });
 
-  describe("public", function(){
-    it("should return public object", function(done){
-      var root = __dirname + "/fixtures/data/valid"
-      var poly = polymer.root(root)
-      poly.render("pub.json.jade", { "layout": false }, function(err, result){
-        var pub = JSON.parse(result)
-        should.exist(pub["_contents"])
-        done()
-      })
-    })
-  })
-
-})
+});

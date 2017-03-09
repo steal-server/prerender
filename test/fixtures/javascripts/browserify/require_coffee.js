@@ -1,3 +1,3 @@
 var pow = require('./Math.coffee').pow;
-
-console.log(pow(4));
+var debug = require('debug');
+debug('pow')(pow(4));
