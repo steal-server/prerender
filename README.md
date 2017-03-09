@@ -1,4 +1,4 @@
-[[src="https://travis-ci.org/dssrv/prerender.svg?branch=master"|alt=build]]
+![build](https://travis-ci.org/dssrv/prerender.svg?branch=master)
 # dssrv-prerender forked from terraform
 
 > dssrv-prerender is the pre-processor engine for the [DIREKTSPEED Server](https://github.com/dssrv/dssrv) web, content, media & app Delivery server. dssrv-prerender does not write or serve files. It processes and provides a layout/partial paradigm.
