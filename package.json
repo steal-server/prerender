@@ -1,12 +1,12 @@
 {
-  "name": "dssrv-prerender",
+  "name": "steal-ssr-renderers",
   "version": "1.3.5",
   "description": "pre-processor engine that powers the Steal Server",
   "repository": {
     "type": "git",
     "url": "https://github.com/dssrv/prerender.git"
   },
-  "main": "./lib/dssrv-prerender",
+  "main": "./lib/steal-ssr-renderers",
   "scripts": {
     "test": "npm install",
     "test2": "npm run jshint && npm run mocha",

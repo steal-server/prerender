@@ -1,7 +1,7 @@
 ![build](https://travis-ci.org/dssrv/prerender.svg?branch=master)
-# dssrv-prerender forked from terraform
+# steal-ssr-renderers forked from terraform
 
-> dssrv-prerender is the pre-processor engine for the [DIREKTSPEED Server](https://github.com/dssrv/dssrv) web, content, media & app Delivery server. dssrv-prerender does not write or serve files. It processes and provides a layout/partial paradigm.
+> steal-ssr-renderers is the pre-processor engine for the [DIREKTSPEED Server](https://github.com/dssrv/dssrv) web, content, media & app Delivery server. steal-ssr-renderers does not write or serve files. It processes and provides a layout/partial paradigm.
 
 ## Features
 
@@ -20,7 +20,7 @@
 ## Install
 
 ```
-npm install dssrv-prerender
+npm install steal-ssr-renderers
 ```
 
 ## API
@@ -29,7 +29,7 @@ npm install dssrv-prerender
 Step 1) require the library
 
 ```javascript
-var dssrv-prerender = require('dssrv-prerender')
+var renderers = require('steal-ssr-renderers')
 ```
 
 Step 2) set the root
@@ -38,7 +38,7 @@ Step 2) set the root
 - globals (Object): global variables to be available to every template
 
 ```javascript
-var planet = dssrv-prerender.root("path/to/public/dir", { "title": "Bitchin" })
+var planet = renderersroot("path/to/public/dir", { "title": "Bitchin" })
 ```
 
 Step 3) render a file
